@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://so0f4cgu5kow"]
+
+[ext_resource type="Script" uid="uid://bj6ak4r3tte0i" path="res://scenes/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://cjfp1uh6kmyk7" path="res://assets/Blue.png" id="2_bqqt6"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_ekxnf")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bqqt6")
+stretch_mode = 1
+
+[node name="level1" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = 71.0
+offset_right = -32.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1"
+
+[node name="level2" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 31.0
+offset_top = 71.0
+offset_right = 255.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 2"
+
+[connection signal="pressed" from="level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="level2" to="." method="_on_level_2_pressed"]
