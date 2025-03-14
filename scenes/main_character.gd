@@ -5,6 +5,13 @@ const JUMP_VELOCITY = -600.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+func bounce():
+	velocity.y = -400.0
+	
+func jump_side(x):
+	velocity.y = -400
+	velocity.x = x
+
 func _physics_process(delta: float) -> void:
 	#Animations
 	if (velocity.x > 1 || velocity.x < -1):

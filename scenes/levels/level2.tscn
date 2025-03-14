@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=4 uid="uid://c82nn066hjuq5"]
+[gd_scene load_steps=12 format=4 uid="uid://c82nn066hjuq5"]
 
 [ext_resource type="Texture2D" uid="uid://dcjdstndwkdoj" path="res://assets/Brown.png" id="1_6ep0u"]
 [ext_resource type="Texture2D" uid="uid://v3qam2qccssc" path="res://assets/Terrain (16x16).png" id="2_rmy57"]
 [ext_resource type="PackedScene" uid="uid://bpwilxku6olae" path="res://scenes/main_character.tscn" id="3_qulpo"]
 [ext_resource type="PackedScene" uid="uid://dovql2n5h7oj6" path="res://scenes/cherry_collectable.tscn" id="4_jifot"]
 [ext_resource type="PackedScene" uid="uid://jv55ys0q6c8w" path="res://scenes/end_goal.tscn" id="5_3opl0"]
-[ext_resource type="PackedScene" uid="uid://so0f4cgu5kow" path="res://scenes/main_menu.tscn" id="6_6ep0u"]
+[ext_resource type="PackedScene" uid="uid://so0f4cgu5kow" path="res://scenes/levels/main_menu.tscn" id="6_6ep0u"]
+[ext_resource type="PackedScene" uid="uid://c7886rlca266o" path="res://scenes/death_barrier.tscn" id="7_bo4dx"]
 [ext_resource type="Script" uid="uid://fhv71hc1rs3u" path="res://game_manager.gd" id="7_s8oj7"]
 [ext_resource type="PackedScene" uid="uid://b65xgfer20j2i" path="res://scenes/ui.tscn" id="8_hrcei"]
 
@@ -356,6 +357,9 @@ position = Vector2(889, 806)
 [node name="EndGoal" parent="SceneObjects" instance=ExtResource("5_3opl0")]
 position = Vector2(3814, 1123)
 target_level = ExtResource("6_6ep0u")
+
+[node name="DeathBarrier" parent="SceneObjects" instance=ExtResource("7_bo4dx")]
+position = Vector2(1818, 1596)
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true

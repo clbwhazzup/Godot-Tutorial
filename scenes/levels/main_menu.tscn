@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://so0f4cgu5kow"]
+[gd_scene load_steps=6 format=3 uid="uid://so0f4cgu5kow"]
 
-[ext_resource type="Script" uid="uid://bj6ak4r3tte0i" path="res://scenes/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Script" uid="uid://bj6ak4r3tte0i" path="res://scenes/levels/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://cjfp1uh6kmyk7" path="res://assets/Blue.png" id="2_bqqt6"]
+[ext_resource type="StyleBox" uid="uid://c3smj7411fn1e" path="res://assets/box_style_hover.tres" id="3_fkd6t"]
+[ext_resource type="StyleBox" uid="uid://s5o3867i3ksj" path="res://assets/box_style_pressed.tres" id="4_keln3"]
+[ext_resource type="StyleBox" uid="uid://cf5fmgot8n14w" path="res://assets/box_style.tres" id="5_crctu"]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_ekxnf")
@@ -28,6 +31,9 @@ offset_right = -32.0
 offset_bottom = 127.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/hover = ExtResource("3_fkd6t")
+theme_override_styles/pressed = ExtResource("4_keln3")
+theme_override_styles/normal = ExtResource("5_crctu")
 text = "Level 1"
 
 [node name="level2" type="Button" parent="."]
@@ -42,6 +48,9 @@ offset_right = 255.0
 offset_bottom = 127.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/hover = ExtResource("3_fkd6t")
+theme_override_styles/pressed = ExtResource("4_keln3")
+theme_override_styles/normal = ExtResource("5_crctu")
 text = "Level 2"
 
 [connection signal="pressed" from="level1" to="." method="_on_level_1_pressed"]

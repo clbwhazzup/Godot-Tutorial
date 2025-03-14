@@ -1,6 +1,15 @@
-[gd_scene format=3 uid="uid://b65xgfer20j2i"]
+[gd_scene load_steps=7 format=3 uid="uid://b65xgfer20j2i"]
 
-[node name="UI" type="CanvasLayer"]
+[ext_resource type="Script" uid="uid://b0mei575uos03" path="res://scenes/ui.gd" id="1_8dubc"]
+[ext_resource type="Texture2D" uid="uid://n8eb8thp354b" path="res://assets/static_apple.tres" id="1_nt7q6"]
+[ext_resource type="StyleBox" uid="uid://c3smj7411fn1e" path="res://assets/box_style_hover.tres" id="2_gdt2y"]
+[ext_resource type="Script" uid="uid://c62qkxg0pql6g" path="res://scenes/pause.gd" id="2_wm3ai"]
+[ext_resource type="StyleBox" uid="uid://s5o3867i3ksj" path="res://assets/box_style_pressed.tres" id="2_yev5y"]
+[ext_resource type="StyleBox" uid="uid://cf5fmgot8n14w" path="res://assets/box_style.tres" id="3_gdt2y"]
+
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("hearts")]
+script = ExtResource("1_8dubc")
+hearts = [NodePath("Hearts/HBoxContainer/Heart"), NodePath("Hearts/HBoxContainer/Heart2"), NodePath("Hearts/HBoxContainer/Heart3")]
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 26.0
@@ -20,3 +29,112 @@ theme_override_font_sizes/font_size = 30
 text = "Points: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Hearts" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -268.0
+offset_top = 28.0
+offset_right = -27.0
+offset_bottom = 117.0
+grow_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hearts"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -37.5
+offset_right = 118.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Heart" type="TextureRect" parent="Hearts/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_nt7q6")
+expand_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="Hearts/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_nt7q6")
+expand_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="Hearts/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_nt7q6")
+expand_mode = 2
+
+[node name="Pause" type="Node" parent="."]
+script = ExtResource("2_wm3ai")
+
+[node name="PausePanel" type="Panel" parent="Pause"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Pause/PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.5
+offset_top = -155.5
+offset_right = 70.5
+offset_bottom = -98.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause/PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -86.0
+offset_right = 172.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Resume" type="Button" parent="Pause/PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = ExtResource("2_gdt2y")
+theme_override_styles/pressed = ExtResource("2_yev5y")
+theme_override_styles/normal = ExtResource("3_gdt2y")
+text = "Resume"
+
+[node name="MainMenu" type="Button" parent="Pause/PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = ExtResource("2_gdt2y")
+theme_override_styles/pressed = ExtResource("2_yev5y")
+theme_override_styles/normal = ExtResource("3_gdt2y")
+text = "Main Menu"
+
+[connection signal="pressed" from="Pause/PausePanel/VBoxContainer/Resume" to="Pause" method="_on_resume_pressed"]
+[connection signal="pressed" from="Pause/PausePanel/VBoxContainer/MainMenu" to="Pause" method="_on_main_menu_pressed"]
