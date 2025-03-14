@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://jv55ys0q6c8w"]
 
-[ext_resource type="Script" uid="uid://ctd7k04ywnytl" path="res://scenes/end_goal.gd" id="1_dfs2x"]
+[ext_resource type="Script" uid="uid://ctd7k04ywnytl" path="res://scenes/level_objects/end_goal.gd" id="1_dfs2x"]
 [ext_resource type="Texture2D" uid="uid://cabysk30vdxmc" path="res://assets/End (Idle).png" id="1_ucdw6"]
 [ext_resource type="Texture2D" uid="uid://dp31yvvfxyikg" path="res://assets/End (Pressed) (64x64).png" id="2_5hn7s"]
 

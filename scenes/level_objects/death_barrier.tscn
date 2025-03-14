@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7886rlca266o"]
 
-[ext_resource type="Script" uid="uid://ccykpr2i85t4f" path="res://scenes/death_barrier.gd" id="1_cg6e6"]
+[ext_resource type="Script" uid="uid://ccykpr2i85t4f" path="res://scenes/level_objects/death_barrier.gd" id="1_cg6e6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0xx7b"]
 

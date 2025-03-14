@@ -1,11 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://b65xgfer20j2i"]
+[gd_scene load_steps=11 format=3 uid="uid://b65xgfer20j2i"]
 
-[ext_resource type="Script" uid="uid://b0mei575uos03" path="res://scenes/ui.gd" id="1_8dubc"]
+[ext_resource type="Script" uid="uid://b0mei575uos03" path="res://scenes/ui/ui.gd" id="1_8dubc"]
 [ext_resource type="Texture2D" uid="uid://n8eb8thp354b" path="res://assets/static_apple.tres" id="1_nt7q6"]
 [ext_resource type="StyleBox" uid="uid://c3smj7411fn1e" path="res://assets/box_style_hover.tres" id="2_gdt2y"]
-[ext_resource type="Script" uid="uid://c62qkxg0pql6g" path="res://scenes/pause.gd" id="2_wm3ai"]
+[ext_resource type="Texture2D" path="res://assets/static_cherry.tres" id="2_ktti3"]
+[ext_resource type="Script" uid="uid://c62qkxg0pql6g" path="res://scenes/ui/pause.gd" id="2_wm3ai"]
 [ext_resource type="StyleBox" uid="uid://s5o3867i3ksj" path="res://assets/box_style_pressed.tres" id="2_yev5y"]
+[ext_resource type="Texture2D" path="res://assets/Mushroom/static_mushroom.tres" id="3_cgfq5"]
 [ext_resource type="StyleBox" uid="uid://cf5fmgot8n14w" path="res://assets/box_style.tres" id="3_gdt2y"]
+[ext_resource type="PackedScene" uid="uid://so0f4cgu5kow" path="res://scenes/levels/main_menu.tscn" id="6_uegxj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktti3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("hearts")]
 script = ExtResource("1_8dubc")
@@ -14,19 +20,44 @@ hearts = [NodePath("Hearts/HBoxContainer/Heart"), NodePath("Hearts/HBoxContainer
 [node name="Panel" type="Panel" parent="."]
 offset_left = 26.0
 offset_top = 23.0
-offset_right = 267.0
+offset_right = 292.0
 offset_bottom = 114.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ktti3")
 
-[node name="Label" type="Label" parent="Panel"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_ktti3")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Points: 0"
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_cgfq5")
+expand_mode = 2
+
+[node name="Label2" type="Label" parent="Panel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -39,6 +70,7 @@ offset_top = 28.0
 offset_right = -27.0
 offset_bottom = 117.0
 grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ktti3")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Hearts"]
 layout_mode = 1
@@ -74,6 +106,7 @@ expand_mode = 2
 
 [node name="Pause" type="Node" parent="."]
 script = ExtResource("2_wm3ai")
+target_level = ExtResource("6_uegxj")
 
 [node name="PausePanel" type="Panel" parent="Pause"]
 unique_name_in_owner = true

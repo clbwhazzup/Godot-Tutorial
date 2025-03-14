@@ -11,8 +11,7 @@ func _on_body_entered(body: Node2D) -> void:
 		game_manager.stop_input()
 		animated_sprite_2d.animation = "pressed"
 		call_deferred("switch_level")
-		
+
 func switch_level():
 		await get_tree().create_timer(waiting_time).timeout
 		get_tree().change_scene_to_packed(target_level)
-	

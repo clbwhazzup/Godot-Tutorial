@@ -16,15 +16,14 @@ func _physics_process(delta: float) -> void:
 	#Animations
 	if (velocity.x > 1 || velocity.x < -1):
 		animated_sprite_2d.animation = "running"
-	
+
 	else:
 		animated_sprite_2d.animation = "default"
-	
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		animated_sprite_2d.animation = "jumping"
-		
 
 	# Handle jump.
 	if Input.is_action_just_pressed("Jump") and is_on_floor():

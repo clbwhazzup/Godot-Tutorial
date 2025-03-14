@@ -1,13 +1,10 @@
 extends Node
+
+@export var target_level : PackedScene
 @onready var pause_panel: Panel = %PausePanel
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var esc_pressed = Input.is_action_just_pressed("Pause")
 	if (esc_pressed):
 		get_tree().paused = true
@@ -19,4 +16,4 @@ func _on_resume_pressed():
 
 func _on_main_menu_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/levels/main_menu.tscn")
+	get_tree().change_scene_to_packed(target_level)
