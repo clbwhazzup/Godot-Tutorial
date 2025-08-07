@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c66qgivobfmrl"]
+
+[ext_resource type="Script" uid="uid://dps1b3ml220lo" path="res://scenes/collectables/apple_collectable.gd" id="1_85p0u"]
+[ext_resource type="Texture2D" uid="uid://dpqw8toook4qv" path="res://assets/heart.png" id="2_0xdgv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tgfl3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0xdgv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ku5g"]
+radius = 24.0832
+
+[node name="Heart_Collectable" type="Area2D"]
+script = ExtResource("1_85p0u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_tgfl3")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4ku5g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

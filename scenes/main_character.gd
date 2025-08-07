@@ -9,7 +9,7 @@ func bounce():
 	velocity.y = -400.0
 	
 func jump_side(x):
-	velocity.y = -400
+	velocity.y = -400.0
 	velocity.x = x
 
 func _physics_process(delta: float) -> void:
@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		animated_sprite_2d.animation = "jumping"
+		
 
 	# Handle jump.
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
@@ -37,7 +38,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, 30)
 
-	move_and_slide()
+	if (velocity.x < 0):
+		animated_sprite_2d.flip_h = true
+	elif (velocity.x > 0):
+		animated_sprite_2d.flip_h = false
 
-	var isLeft = velocity.x < 0
-	animated_sprite_2d.flip_h = isLeft
+	move_and_slide()
